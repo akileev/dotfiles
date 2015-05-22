@@ -13,28 +13,10 @@
 *color9:	#FF0000
 *color10:	#00FF00
 *color11:	#FFFF00
-*color12:	#0000FF
+*color12:	#295FCC
 *color13:	#FF00FF
 *color14:	#00FFFF
 *color15:	#FFFFFF
-
-# *color7:                 #DED82C
-# *color6:                 #AA5500
-# *color5:                #4CE64C
-# *color4:                #44AA44
-# *color3:                #FF8787
-# *color2:                #AA0000
-# *color1:                #777777
-# *color0:                #000000
-
-# *color15:                 #FFFFFF
-# *color14:                 #AAAAAA
-# *color13:                 #4CCCE6
-# *color12:                 #1A92AA
-# *color11:                 #CC58CC
-# *color10:                 #AA22AA
-# *color9:                 #295FCC
-# *color8:                 #0039AA
 
 Xft.dpi: 96
 Xft.antalias: true
