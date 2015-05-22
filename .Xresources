@@ -1,0 +1,50 @@
+*background:              #131926
+*foreground:              #B7B7B7
+
+*color0:	#000000
+*color1:	#CC0000
+*color2:	#00CC00
+*color3:	#BD5E01
+*color4:	#0000CC
+*color5:	#CC00CC
+*color6:	#00CCCC
+*color7:	#AAAAAA
+*color8:	#777777
+*color9:	#FF0000
+*color10:	#00FF00
+*color11:	#FFFF00
+*color12:	#0000FF
+*color13:	#FF00FF
+*color14:	#00FFFF
+*color15:	#FFFFFF
+
+# *color7:                 #DED82C
+# *color6:                 #AA5500
+# *color5:                #4CE64C
+# *color4:                #44AA44
+# *color3:                #FF8787
+# *color2:                #AA0000
+# *color1:                #777777
+# *color0:                #000000
+
+# *color15:                 #FFFFFF
+# *color14:                 #AAAAAA
+# *color13:                 #4CCCE6
+# *color12:                 #1A92AA
+# *color11:                 #CC58CC
+# *color10:                 #AA22AA
+# *color9:                 #295FCC
+# *color8:                 #0039AA
+
+Xft.dpi: 96
+Xft.antalias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
+
+URxvt*geometry: 83x23
+URxvt*font: xft:Droid Sans Mono:size=9
+URxvt*boldFont: xft:Droid Sans Mono:size=9
+URxvt*urlLauncher: chrome
+URxvt*scrollBar: false
