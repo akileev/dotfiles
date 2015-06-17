@@ -36,6 +36,10 @@ import XMonad.Layout.Reflect
 import XMonad.Layout.ResizableTile
 import XMonad.Layout.Tabbed
 import XMonad.Layout.TwoPane
+import XMonad.Layout.Spacing
+import XMonad.Layout.PerWorkspace
+import XMonad.Layout.IM
+import Data.Ratio ((%)) 
 import XMonad.Util.SpawnOnce
  
 conf = ewmh xfceConfig
@@ -49,7 +53,7 @@ conf = ewmh xfceConfig
         , focusedBorderColor= "red"
         , normalBorderColor = "#444444"
         , workspaces        = map show [1 .. 9 :: Int]
-        , modMask           = mod1Mask
+        , modMask           = mod4Mask
         , keys              = myKeys
          }
     where
@@ -83,9 +87,12 @@ myStartHook = spawnOnce "bash ~/.xmonad/autostart.sh" <+>
  
  
 -- Layouts --
-myLayoutHook = tile ||| mtile ||| full ||| tab
+myLayoutHook = onWorkspace "5" pidginLayout $ tile ||| mtile ||| full ||| tab
   where
     rt      = ResizableTall 1 (2/100) (1/2) []
+    -- Pidgin and Thunderbird
+    gridLayout = Grid
+    pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout
     -- normal vertical tile
     tile    = named "[]="   $ smartBorders rt
     -- normal horizontal tile
@@ -130,10 +137,15 @@ myManageHook = composeAll [ matchAny v --> a | (v,a) <- myActions]
             , ("Xfce4-notifyd"                  , doIgnore)
             , ("MPlayer"                        , doFloat)
             , ("mpv"                            , doFloat)
-            , ("Firefox"                        , doShift "1")
-            , ("Eclipse"                        , doShift "2")
-            , ("Oracle VM VirtualBox Manager"   , doShift "8")
-            , ("VirtualBox"                     , doShift "9")
+            , ("Google-chrome-stable"           , doShift "4")
+            , ("Transmission-gtk"               , doShift "6")
+            , ("Smplayer"                       , doShift "6")
+            , ("Audacious"                      , doShift "6")
+            , ("Oracle VM VirtualBox Manager"   , doShift "3")
+            , ("VirtualBox"                     , doShift "3")
+            , ("Thunar"                         , doShift "7")
+            , ("Thunderbird"                    , doShift "5")
+            , ("Pidgin"                    , doShift "5")
             , ("gimp-image-window"              , (ask >>= doF . W.sink))
             , ("gimp-toolbox"                   , (ask >>= doF . W.sink))
             , ("gimp-dock"                      , (ask >>= doF . W.sink))
@@ -188,6 +200,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask,                xK_Return   ), spawn "xfce4-terminal")
     , ((modMask,                xK_o        ), spawn "xfrun4")
+    , ((modMask,                xK_d        ), spawn "dmenu_run -b")
     , ((modMask,                xK_f        ), spawn "thunar")
     , ((modMask,                xK_c        ), kill)
     , ((modMask,                xK_b        ), sendMessage ToggleStruts)
