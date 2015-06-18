@@ -147,6 +147,7 @@ myManageHook = composeAll [ matchAny v --> a | (v,a) <- myActions]
             , ("Thunar"                         , doShift "7")
             , ("Thunderbird"                    , doShift "5")
             , ("Pidgin"                         , doShift "5")
+            , ("Skype"                          , doShift "5")
             , ("gimp-image-window"              , (ask >>= doF . W.sink))
             , ("gimp-toolbox"                   , (ask >>= doF . W.sink))
             , ("gimp-dock"                      , (ask >>= doF . W.sink))
