@@ -1,11 +1,12 @@
 #!/bin/bash
 
-killall xfdesktop &
-xfce4-panel --restart &
+xfce4-panel &
+nm-applet &
 transmission-gtk &
 audacious &
 thunar &
 thunderbird &
 pidgin &
-google-chrome-stable &
+chromium-browser &
 virtualbox &
+skype &
