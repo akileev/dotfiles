@@ -47,12 +47,12 @@ conf = ewmh xfceConfig
                                            <+> manageDocks
                                            <+> manageHook xfceConfig
         , layoutHook        = avoidStruts (myLayoutHook)
-	, startupHook       = myStartHook
-        , handleEventHook   = ewmhDesktopsEventHook
+        , startupHook       = myStartHook
+        , handleEventHook   = ewmhDesktopsEventHook <+> fullscreenEventHook
         , borderWidth       = 1
         , focusedBorderColor= "red"
         , normalBorderColor = "#444444"
-        , workspaces        = map show [1 .. 9 :: Int]
+        , workspaces        = myWorkspaces
         , modMask           = mod4Mask
         , keys              = myKeys
          }
@@ -68,6 +68,13 @@ main =
         , logHook           =  ewmhDesktopsLogHook
          }
  
+-- Workspaces
+myWorkspaces = 
+    [
+        "1:term", "2:dev", "3:virt", 
+        "4:web", "5:soc", "6:media", 
+        "7:other", "8", "9"
+    ]
  
 -- Tabs theme --
 myTabTheme = defaultTheme
@@ -82,12 +89,13 @@ myTabTheme = defaultTheme
     , fontName              = "xft:Liberation Sans:size=12"
     }
 
-myStartHook = spawnOnce "bash ~/.xmonad/autostart.sh" <+>
+myStartHook = ewmhDesktopsStartup <+>
+              spawnOnce "bash -l ~/.xmonad/autostart.sh" <+>
               setWMName "LG3D"
  
  
 -- Layouts --
-myLayoutHook = onWorkspace "5" pidginLayout $ tile ||| mtile ||| full ||| tab
+myLayoutHook = onWorkspace "5:soc" pidginLayout $ tile ||| mtile ||| full ||| tab
   where
     rt      = ResizableTall 1 (2/100) (1/2) []
     -- Pidgin and Thunderbird
@@ -137,17 +145,18 @@ myManageHook = composeAll [ matchAny v --> a | (v,a) <- myActions]
             , ("Xfce4-notifyd"                  , doIgnore)
             , ("MPlayer"                        , doFloat)
             , ("mpv"                            , doFloat)
-            , ("jetbrains-idea"                 , doShift "2")
-            , ("Google-chrome-stable"           , doShift "4")
-            , ("Transmission-gtk"               , doShift "6")
-            , ("Smplayer"                       , doShift "6")
-            , ("Audacious"                      , doShift "6")
-            , ("Oracle VM VirtualBox Manager"   , doShift "3")
-            , ("VirtualBox"                     , doShift "3")
-            , ("Thunar"                         , doShift "7")
-            , ("Thunderbird"                    , doShift "5")
-            , ("Pidgin"                         , doShift "5")
-            , ("Skype"                          , doShift "5")
+            , ("jetbrains-idea"                 , doShift "2:dev")
+            , ("Google-chrome-stable"           , doShift "4:web")
+            , ("Chromium-browser"               , doShift "4:web")
+            , ("Transmission-gtk"               , doShift "6:media")
+            , ("Smplayer"                       , doShift "6:media")
+            , ("Audacious"                      , doShift "6:media")
+            , ("Oracle VM VirtualBox Manager"   , doShift "3:virt")
+            , ("VirtualBox"                     , doShift "3:virt")
+            , ("Thunar"                         , doShift "7:other")
+            , ("Thunderbird"                    , doShift "5:soc")
+            , ("Pidgin"                         , doShift "5:soc")
+            , ("Skype"                          , doShift "5:soc")
             , ("gimp-image-window"              , (ask >>= doF . W.sink))
             , ("gimp-toolbox"                   , (ask >>= doF . W.sink))
             , ("gimp-dock"                      , (ask >>= doF . W.sink))
@@ -185,7 +194,7 @@ myManageHook = composeAll [ matchAny v --> a | (v,a) <- myActions]
             , ("animation-playbac"              , doFloat)
             , ("gimp-file-save"                 , doFloat)
             , ("file-jpeg"                      , doFloat)
-	    , ("Whisker"                        , doFloat)
+            , ("Whisker"                        , doFloat)
             ]
  
 -- Helpers --
@@ -245,7 +254,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
  
     -- quit, or restart
     , ((modMask .|. shiftMask,  xK_q        ), spawn "xmonad --recompile; xmonad --restart")
-    , ((modMask,                xK_q        ), spawn "xfce4-session-logout")
+    , ((modMask,                xK_q        ), spawn "~/.xmonad/session-dialog.sh")
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N
