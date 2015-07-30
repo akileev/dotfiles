@@ -1,23 +1,6 @@
 *background:              #131926
 *foreground:              #B7B7B7
 
-*color0:	#000000
-*color1:	#CC0000
-*color2:	#00CC00
-*color3:	#BD5E01
-*color4:	#0000CC
-*color5:	#CC00CC
-*color6:	#00CCCC
-*color7:	#AAAAAA
-*color8:	#777777
-*color9:	#FF0000
-*color10:	#00FF00
-*color11:	#FFFF00
-*color12:	#295FCC
-*color13:	#FF00FF
-*color14:	#00FFFF
-*color15:	#FFFFFF
-
 Xft.dpi: 96
 Xft.antalias: true
 Xft.rgba: rgb
