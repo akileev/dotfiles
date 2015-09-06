@@ -1,0 +1,78 @@
+(begin
+	(if 
+		(is (window_class) "jetbrains-idea")
+		(begin
+			(set_workspace 3)
+		)
+	)
+
+	(if 
+		(is (window_class) "jetbrains-pycharm")
+		(begin
+			(set_workspace 3)
+		)
+	)
+
+	(if 
+		(is (window_class) "jetbrains-phpstorm")
+		(begin
+			(set_workspace 3)
+		)
+	)
+
+	(if 
+		(is (window_class) "Smplayer")
+		(begin
+			(set_workspace 6)
+		)
+	)
+
+	(if 
+		(is (window_class) "Transmission-gtk")
+		(begin
+			(set_workspace 6)
+		)
+	)
+
+	(if 
+		(is (window_class) "Thunar")
+		(begin
+			(set_workspace 7)
+		)
+	)
+
+	(if 
+		(is (application_name) "Pidgin")
+		(begin
+			(set_workspace 5)
+		)
+	)
+
+	(if 
+		(is (application_name) "Thunderbird")
+		(begin
+			(set_workspace 5)
+		)
+	)
+
+	(if 
+		(is (window_class) "Xfce4-terminal")
+		(begin
+			(set_workspace 1)
+		)
+	)
+
+	(if 
+		(is (window_class) "VirtualBox")
+		(begin
+			(set_workspace 3)
+		)
+	)
+
+	(if 
+		(is (window_class) "Chromium-browser")
+		(begin
+			(set_workspace 2)
+		)
+	)
+)
