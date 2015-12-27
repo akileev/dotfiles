@@ -1,14 +1,15 @@
 #!/bin/bash
 
-killall xfdesktop
-
-xfce4-panel --restart &
-# nm-applet &
+urxvt &
 transmission-gtk &
 audacious &
 thunar &
 thunderbird &
 pidgin &
-chromium-browser &
+chromium &
 virtualbox &
-# skype &
+skype &
+
+setxkbmap -layout 'us,ru' -option 'grp:alt_shift_toggle, grp_led:scroll'
+
+source ~/.bash_profile

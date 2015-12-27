@@ -21,7 +21,6 @@ import System.Exit
 import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Actions.UpdatePointer
-import XMonad.Config.Xfce
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.InsertPosition
@@ -42,15 +41,15 @@ import XMonad.Layout.IM
 import Data.Ratio ((%)) 
 import XMonad.Util.SpawnOnce
  
-conf = ewmh xfceConfig
+conf = ewmh defaultConfig
         { manageHook        = pbManageHook <+> myManageHook
                                            <+> manageDocks
-                                           <+> manageHook xfceConfig
+                                           <+> manageHook defaultConfig
         , layoutHook        = avoidStruts (myLayoutHook)
         , startupHook       = myStartHook
         , handleEventHook   = ewmhDesktopsEventHook <+> fullscreenEventHook
         , borderWidth       = 1
-        , focusedBorderColor= "red"
+        , focusedBorderColor= "#444444"
         , normalBorderColor = "#444444"
         , workspaces        = myWorkspaces
         , modMask           = mod4Mask
@@ -86,7 +85,7 @@ myTabTheme = defaultTheme
     , activeTextColor       = "black"
     , inactiveTextColor     = "black"
     , decoHeight            = 22
-    , fontName              = "xft:Liberation Sans:size=12"
+    , fontName              = "xft:Ubuntu Mono:size=12"
     }
 
 myStartHook = ewmhDesktopsStartup <+>
@@ -100,7 +99,7 @@ myLayoutHook = onWorkspace "5:soc" pidginLayout $ tile ||| mtile ||| full ||| ta
     rt      = ResizableTall 1 (2/100) (1/2) []
     -- Pidgin and Thunderbird
     gridLayout = Grid
-    pidginLayout = withIM (18/100) (Role "buddy_list") gridLayout
+    pidginLayout = withIM (20/100) (Role "buddy_list") gridLayout
     -- normal vertical tile
     tile    = named "[]="   $ smartBorders rt
     -- normal horizontal tile
@@ -148,8 +147,10 @@ myManageHook = composeAll [ matchAny v --> a | (v,a) <- myActions]
             , ("jetbrains-idea"                 , doShift "2:dev")
             , ("Google-chrome-stable"           , doShift "4:web")
             , ("Chromium-browser"               , doShift "4:web")
+            , ("chromium"                       , doShift "4:web")
             , ("Transmission-gtk"               , doShift "6:media")
             , ("Smplayer"                       , doShift "6:media")
+            , ("smplayer"                       , doShift "6:media")
             , ("Audacious"                      , doShift "6:media")
             , ("Oracle VM VirtualBox Manager"   , doShift "3:virt")
             , ("VirtualBox"                     , doShift "3:virt")
@@ -209,9 +210,9 @@ avoidMaster = W.modify' $ \c -> case c of
 myKeys :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
-    [ ((modMask,                xK_Return   ), spawn "xfce4-terminal")
+    [ ((modMask,                xK_Return   ), spawn "urxvt")
     , ((modMask,                xK_o        ), spawn "xfrun4")
-    , ((modMask,                xK_d        ), spawn "dmenu_run -b")
+    , ((modMask,                xK_d        ), spawn "bash -l $HOME/.xmonad/dmenu.sh")
     , ((modMask,                xK_f        ), spawn "thunar")
     , ((modMask,                xK_c        ), kill)
     , ((modMask,                xK_b        ), sendMessage ToggleStruts)

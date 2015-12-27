@@ -1,15 +1,81 @@
-*background:              #131926
-*foreground:              #B7B7B7
-
 Xft.dpi: 96
-Xft.antalias: true
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: false
 Xft.rgba: rgb
 Xft.hinting: true
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
 
-URxvt*geometry: 83x23
-URxvt*font: xft:Droid Sans Mono:size=9
-URxvt*boldFont: xft:Droid Sans Mono:size=9
-URxvt*urlLauncher: chrome
-URxvt*scrollBar: false
+*.font: xft:Ubuntu Mono:size=11
+
+URxvt.perl-ext-common: default,clipboard
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.iso14755: False
+
+URxvt.scrollBar: false
+URxvt*depth: 32
+
+!URxvt.background: #2d2d2d
+!URxvt.foreground: #dedede
+!URxvt.cursorColor: #dedede
+! black
+!URxvt*color0:  #2d2d2d
+!URxvt*color8:  #dedede
+! red
+!URxvt*color1:  #dedede
+!URxvt*color9:  #dedede
+! green
+!URxvt*color2:  #d64937
+!URxvt*color10: #d64937
+! yellow
+!URxvt*color3:  #e9a50d
+!URxvt*color11: #F5C14E
+! blue
+!URxvt*color4:  #31ACEF
+!URxvt*color12: #31ACEF
+! magenta
+!URxvt*color5:  #D33682
+!URxvt*color13: #D33682
+! cyan
+!URxvt*color6:  #dedede
+!URxvt*color14: #dedede
+! white
+!URxvt*color7:  #dedede
+!URxvt*color15: #dedede
+
+*.background: #2d2d2d
+*.foreground: #dedede
+*.cursorColor: #dedede
+
+! black
+*.color0:  #2d2d2d
+*.color8:  #dedede
+
+! red
+*.color1:  #dedede
+*.color9:  #dedede
+
+! green
+*.color2:  #d64937
+*.color10: #d64937
+
+! yellow
+*.color3:  #e9a50d
+*.color11: #F5C14E
+
+! blue
+*.color4:  #31ACEF
+*.color12: #31ACEF
+
+! magenta
+*.color5:  #D33682
+*.color13: #D33682
+
+! cyan
+*.color6:  #dedede
+*.color14: #dedede
+
+! white
+*.color7:  #dedede
+*.color15: #dedede
