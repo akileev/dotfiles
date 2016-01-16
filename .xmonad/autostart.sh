@@ -3,6 +3,7 @@
 urxvt &
 transmission-gtk &
 audacious &
+thunar --daemon &
 thunar &
 thunderbird &
 pidgin &
